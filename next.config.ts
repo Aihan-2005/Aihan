@@ -1,8 +1,29 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  reactCompiler: true,
-};
+  reactStrictMode: true,
+  reactCompiler: true, 
 
-export default nextConfig;
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https", 
+        hostname: "avatars.githubusercontent.com",
+      },
+      {
+        protocol: "https", 
+        hostname: "lh3.googleusercontent.com",
+      },
+      {
+        protocol: "https", 
+        hostname: "cdn.discordapp.com",
+      },
+    ],
+  },
+
+  experimental: {
+    typedRoutes: true, 
+  },
+}
+
+export default nextConfig
