@@ -1,4 +1,3 @@
-// components/sections/Blog.tsx
 'use client'
 
 import { useRef } from 'react'

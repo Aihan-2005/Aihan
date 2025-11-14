@@ -8,7 +8,6 @@ export default function Footer() {
           <p>© 2025 wiserteam — ساخته شده با ❤️ توسط </p>
           <div className="space-x-4">
             <a href="#" className="hover:text-white">Docs</a>
-            <a href="#" className="hover:text-white">GitHub</a>
             <a href="#" className="hover:text-white">Contact</a>
           </div>
         </div>

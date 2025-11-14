@@ -1,15 +1,12 @@
-
 import Navbar from "@/components/layout/Navbar"
-import Hero from "@/components/sections/Hero"
-import Features from "@/components/sections/Features"
 import Footer from "@/components/sections/Footer"
+import Blog from "@/components/sections/Blog"
 
-export default function Home() {
+export default function BlogPage() {
   return (
     <main className="bg-black text-white min-h-screen overflow-x-hidden">
       <Navbar />
-      <Hero />
-      <Features />
+      <Blog />
       <Footer />
     </main>
   )

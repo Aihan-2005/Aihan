@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { useEffect, useState } from "react"
 import { useSession, signIn, signOut } from "next-auth/react"
@@ -7,6 +7,8 @@ import { useNavbarStore } from "@/store/useNavbarStore"
 import Container from "@/components/ui/Container"
 import Button from "@/components/ui/Button"
 import Image from "next/image"
+import Link from "next/link"
+
 
 export default function Navbar() {
   const { data: session } = useSession()
@@ -38,24 +40,29 @@ export default function Navbar() {
     >
       <Container>
         <div className="flex justify-between items-center py-4">
-          {/* Logo */}
-          <a href="/" className="font-extrabold text-2xl text-white tracking-tight">
+          <Link
+            href="/"
+            className="font-extrabold text-2xl text-white tracking-tight select-none"
+          >
             Wiser<span className="text-blue-500">AI</span>
-          </a>
+          </Link>
 
-          <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+          <div
+            dir="rtl"
+            className="hidden md:flex items-center gap-8 text-right"
+          >
             {links.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
-                className="text-gray-300 hover:text-white transition"
+                className="text-gray-300 hover:text-white whitespace-nowrap transition-colors duration-200"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
 
-          <div className="hidden md:flex items-center space-x-5 rtl:space-x-reverse">
+          <div className="hidden md:flex items-center gap-5">
             {user ? (
               <div className="flex items-center gap-3">
                 {user.image && (
@@ -64,7 +71,8 @@ export default function Navbar() {
                     alt={user.name || "avatar"}
                     width={36}
                     height={36}
-                    className="rounded-full border border-gray-700 hover:border-blue-500 transition"
+                    priority
+                    className="rounded-full border border-gray-700 hover:border-blue-500 transition duration-200"
                   />
                 )}
                 <span className="text-gray-300 text-sm">
@@ -72,7 +80,7 @@ export default function Navbar() {
                 </span>
                 <button
                   onClick={() => signOut()}
-                  className="text-red-400 hover:text-red-300 text-sm underline"
+                  className="text-red-400 hover:text-red-300 text-sm underline underline-offset-4"
                 >
                   خروج
                 </button>
@@ -83,30 +91,31 @@ export default function Navbar() {
                 variant="primary"
                 className="text-sm px-5 py-2"
               >
-                ورود / ثبت‌نام
+                ورود / ثبت‌نام
               </Button>
             )}
           </div>
 
           <button
+            aria-label="Toggle Navbar"
             className="md:hidden flex flex-col space-y-1.5 focus:outline-none"
             onClick={toggle}
           >
             <span
-              className={`w-6 h-0.5 bg-white transition ${
+              className={`w-6 h-0.5 bg-white transition-transform duration-300 ${
                 isOpen ? "rotate-45 translate-y-2" : ""
               }`}
-            ></span>
+            />
             <span
-              className={`w-6 h-0.5 bg-white transition ${
+              className={`w-6 h-0.5 bg-white transition-opacity duration-300 ${
                 isOpen ? "opacity-0" : ""
               }`}
-            ></span>
+            />
             <span
-              className={`w-6 h-0.5 bg-white transition ${
+              className={`w-6 h-0.5 bg-white transition-transform duration-300 ${
                 isOpen ? "-rotate-45 -translate-y-2" : ""
               }`}
-            ></span>
+            />
           </button>
         </div>
       </Container>
@@ -118,38 +127,41 @@ export default function Navbar() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -30, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-black/95 backdrop-blur-md border-t border-gray-800"
+            className="md:hidden bg-black/95 backdrop-blur-md border-t border-gray-800 shadow-lg"
           >
-            <div className="flex flex-col items-center py-5 space-y-5">
+            <div dir="rtl" className="flex flex-col items-center py-6 gap-5 text-right">
               {links.map((item) => (
-                <a
+                <Link
                   key={item.href}
                   href={item.href}
                   onClick={close}
-                  className="text-gray-300 hover:text-white text-lg transition"
+                  className="text-gray-300 hover:text-white text-lg transition-colors duration-200"
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
 
               {user ? (
-                <div className="flex flex-col items-center space-y-3">
+                <div className="flex flex-col items-center gap-3">
                   {user.image && (
                     <Image
                       src={user.image}
                       alt={user.name || "avatar"}
                       width={40}
                       height={40}
+                      priority
                       className="rounded-full border border-gray-700"
                     />
                   )}
-                  <span className="text-gray-400 text-sm">سلام، {user.name}</span>
+                  <span className="text-gray-400 text-sm">
+                    سلام، {user.name?.split(" ")[0] || "کاربر"}
+                  </span>
                   <button
                     onClick={() => {
                       signOut()
                       close()
                     }}
-                    className="text-red-400 hover:text-red-300 text-sm underline"
+                    className="text-red-400 hover:text-red-300 text-sm underline underline-offset-4"
                   >
                     خروج
                   </button>
@@ -161,8 +173,9 @@ export default function Navbar() {
                     signIn()
                     close()
                   }}
+                  className="text-sm px-5"
                 >
-                  ورود / ثبت‌نام
+                  ورود / ثبت‌نام
                 </Button>
               )}
             </div>
