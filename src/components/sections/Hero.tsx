@@ -1,14 +1,72 @@
+// 'use client'
+
+// import { motion } from "framer-motion"
+// import Button from "@/components/ui/Button"
+// import Container from "@/components/ui/Container"
+
+// export default function Hero() {
+//   return (
+//     <section className="min-h-screen flex flex-col justify-center bg-gradient-to-b from-black via-gray-900 to-black text-white">
+//       <Container>
+//         <div className="text-center">
+//           <motion.h1
+//             className="text-5xl md:text-7xl font-extrabold tracking-tight"
+//             initial={{ opacity: 0, y: -40 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.8 }}
+//           >
+//             WiserAI
+//           </motion.h1>
+
+//           <motion.p
+//             className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto"
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             transition={{ delay: 0.4 }}
+//           >
+//             سامانه‌ای برای ساخت و انتشار مدل‌های هوش مصنوعی،  
+//             دقیق، امن و قدرتمند 
+//           </motion.p>
+
+//           <motion.div
+//             className="mt-10 flex justify-center space-x-4"
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             transition={{ delay: 0.9 }}
+//           >
+//             <Button variant="primary">شروع کن</Button>
+//             <Button variant="secondary">مشاهده دمو</Button>
+//           </motion.div>
+//         </div>
+//       </Container>
+//     </section>
+//   )
+// }
 'use client'
 
 import { motion } from "framer-motion"
 import Button from "@/components/ui/Button"
 import Container from "@/components/ui/Container"
+import Aurora from "../ui/Aurora"
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex flex-col justify-center bg-gradient-to-b from-black via-gray-900 to-black text-white">
+    <section className="min-h-screen flex flex-col justify-center text-white relative overflow-hidden">
+      {/* بک‌گراند Aurora */}
+      <div className="absolute inset-0 z-10">
+        <Aurora
+  colorStops={["#61f5f2", "#b19eef", "#3507ed"]}
+  blend={0.5}
+  amplitude={1.0}
+  speed={0.5}
+/>
+      </div>
+      
+      {/* گرادیان تیره برای خوانایی بهتر متن */}
+      <div className="absolute inset-0 -z-5 bg-gradient-to-b from-black/70 via-gray-900/50 to-black/70" />
+      
       <Container>
-        <div className="text-center">
+        <div className="text-center relative z-10">
           <motion.h1
             className="text-5xl md:text-7xl font-extrabold tracking-tight"
             initial={{ opacity: 0, y: -40 }}
@@ -29,7 +87,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div
-            className="mt-10 flex justify-center space-x-4"
+            className="mt-10 flex justify-center space-x-4 rtl:space-x-reverse"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9 }}
