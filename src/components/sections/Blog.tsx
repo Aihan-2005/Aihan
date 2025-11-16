@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+// components/sections/Blog.tsx
+>>>>>>> 6dfd8d0487202a5237bc10888b093587bc41aae9
 'use client'
 
 import { useRef } from 'react'
