@@ -1,6 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/sections/Footer";
-import Documents from "@/components/sections/documents";
+import Documents from "@/components/sections/Documents";
 
 export default function AboutUsPage(){
   return (
