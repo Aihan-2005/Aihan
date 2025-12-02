@@ -28,6 +28,8 @@ export default function Navbar() {
     { name: "قیمت‌ها", href: "/pricing" },
     { name: "مستندات", href: "/docs" },
     { name: "بلاگ", href: "/blog" },
+    { name: "درباره ما", href: "/about" },
+    { name: " ارتباط با ما", href: "/contact" },
   ]
 
   return (
