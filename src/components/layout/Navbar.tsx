@@ -26,7 +26,7 @@ export default function Navbar() {
     { name: "خانه", href: "/" },
     { name: "محصولات", href: "/products" },
     { name: "قیمت‌ها", href: "/pricing" },
-    { name: "مستندات", href: "/docs" },
+    { name: "مستندات", href: "/document" },
     { name: "بلاگ", href: "/blog" },
     { name: "درباره ما", href: "/about" },
     { name: " ارتباط با ما", href: "/contact" },
