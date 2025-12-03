@@ -1,3 +1,5 @@
+'use cleint';
+
 import Container from "@/components/ui/Container"
 
 export default function Footer() {

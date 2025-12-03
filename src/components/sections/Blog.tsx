@@ -5,6 +5,7 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Container from "@/components/ui/Container"
 import SpotlightCard from '../ui/SpotlightCard'
+import Image from 'next/image'
 
 interface BlogPost {
   id: number
@@ -129,7 +130,10 @@ function BlogCard({ post, index, isInView }: {
         <div className="flex flex-col h-full">
           
           <div className="relative w-full h-48 overflow-hidden">
-            <img
+            <Image
+              width={100}
+              height={100}
+              priority
               src={post.image}
               alt={post.title}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"

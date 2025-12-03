@@ -215,8 +215,8 @@ export default function Navbar() {
   const links = [
     { name: "خانه", href: "/" },
     { name: "محصولات", href: "/products" },
-    { name: "قیمت‌ها", href: "/pricing" },
-    { name: "مستندات", href: "/docs" },
+    { name: "قیمت‌ها", href: "/price" },
+    { name: "مستندات", href: "/document" },
     { name: "بلاگ", href: "/blog" },
     { name: "درباره ما", href: "/about" },
     { name: "ارتباط با ما", href: "/contact" },
