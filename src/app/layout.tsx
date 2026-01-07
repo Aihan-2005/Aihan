@@ -1,46 +1,37 @@
-import type { Metadata } from "next"
-import "./globals.css"
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
+import Navbar from '@/components/layout/Navbar'
+import Footer from '@/components/sections/Footer'
+import SessionProvider from '@/providers/SessionProvider'
 
-import { Inter } from "next/font/google"
-
-import SessionProviderWrapper from "@/components/providers/SessionProviderWrapper"
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-})
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "Wiserapp — AI Products Marketplace",
-  description:
-    "خرید، بررسی و تجربه محصولات هوش مصنوعی در Wiserapp. هوشمند انتخاب کن، حرفه‌ای استفاده کن.",
-  manifest: "/manifest.json",
-  openGraph: {
-    title: "Wiserapp | بازار محصولات هوش مصنوعی",
-    description:
-      "با Wiserapp جدیدترین ابزارهای AI را تجربه کن — از چت‌بات‌ها تا مدل‌های تولید تصویر.",
-    url: "https://wiserapp.ai",
-    siteName: "Wiserapp",
-    locale: "fa_IR",
-    type: "website",
-  },
-  icons: {
-    icon: "/favicon.ico",
-  },
+  title: 'استارتاپ ما - دستیار هوش مصنوعی',
+  description: 'طراحی سایت و توسعه دستیار هوش مصنوعی',
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="fa" dir="rtl" className="bg-black">
-      <body
-        className={`${inter.variable} antialiased bg-black text-white min-h-screen`}
-      >
-        <SessionProviderWrapper>{children}</SessionProviderWrapper>
+    <html lang="fa" dir="rtl">
+      <body className={`${inter.className} bg-black text-white`}>
+        <SessionProvider>
+          {/* Navbar یه بار اینجا رندر میشه */}
+          <Navbar />
+          
+          {/* محتوای صفحات */}
+          <main className="min-h-screen">
+            {children}
+          </main>
+          
+          {/* Footer یه بار اینجا رندر میشه */}
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   )

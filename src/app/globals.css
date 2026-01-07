@@ -116,3 +116,29 @@ body {
 .animation-delay-6000 {
   animation-delay: 6000ms;
 }
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  transition: all 0.3s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}

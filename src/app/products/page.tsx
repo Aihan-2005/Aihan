@@ -1,13 +1,10 @@
-import Navbar from "@/components/layout/Navbar"
-import Footer from "@/components/sections/Footer"
-import Products from "@/components/sections/Products"
+import Products from '@/components/sections/Products'
 
 export default function ProductsPage() {
   return (
-    <main className="bg-black text-white min-h-screen overflow-x-hidden">
-      <Navbar />
+    <div className="pt-20">
+      {/* فقط کامپوننت محصولات - Navbar و Footer از layout میاد */}
       <Products />
-      <Footer />
-    </main>
+    </div>
   )
 }
