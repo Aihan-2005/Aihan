@@ -30,7 +30,7 @@ export default function RootLayout({
           </main>
           
           {/* Footer یه بار اینجا رندر میشه */}
-          <Footer />
+          {/* <Footer /> */}
         </SessionProvider>
       </body>
     </html>
