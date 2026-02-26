@@ -18,32 +18,28 @@ export interface ProductFAQ {
 
 export interface Product {
   id: number
-  slug: string                    // برای URL (مثلاً: "smart-assistant")
+  slug: string                    
   name: string
-  tagline: string                 // یک جمله کوتاه توضیحی
+  tagline: string                 
   description: string
-  longDescription: string         // توضیحات کامل
+  longDescription: string        
   image: string
-  icon: string                    // نام آیکون از lucide-react
+  icon: string                    
   color: string
   gradient: string
   tag?: string
   
-  // جزئیات بیشتر
   features: ProductFeature[]
-  benefits: string[]              // مزایای استفاده
-  useCases: string[]             // موارد استفاده
+  benefits: string[]              
+  useCases: string[]            
   pricing: ProductPrice[]
   faqs: ProductFAQ[]
   
-  // تصاویر و دمو
-  gallery: string[]              // تصاویر بیشتر
-  demoVideo?: string             // لینک ویدیو دمو (اختیاری)
+  gallery: string[]            
+  demoVideo?: string            
   
-  // تکنولوژی‌ها
-  technologies: string[]         // تکنولوژی‌های استفاده شده
+  technologies: string[]         
   
-  // آمار
   stats: {
     accuracy?: string
     speed?: string

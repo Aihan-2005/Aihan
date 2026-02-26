@@ -8,7 +8,7 @@ import SessionProvider from '@/providers/SessionProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'استارتاپ ما - دستیار هوش مصنوعی',
+  title: ' وایزر - دستیار هوش مصنوعی',
   description: 'طراحی سایت و توسعه دستیار هوش مصنوعی',
 }
 

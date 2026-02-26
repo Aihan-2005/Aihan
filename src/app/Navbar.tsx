@@ -1,30 +1,28 @@
 'use client'
 
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, LogIn, LogOut, User, Shield } from 'lucide-react'
 import { useSession, signIn, signOut } from 'next-auth/react'
 
-
 const NAV_LINKS = [
-  { name: 'خانه', href: '/' },
-  { name: 'محصولات', href: '/products' },
-  { name: 'درباره ما', href: '/about' },
-  { name: 'تماس', href: '/contact' },
-] as const
+  { name: 'خانه', href: '/' as const },
+  { name: 'محصولات', href: '/products' as const },
+  { name: 'درباره ما', href: '/about' as const },
+  { name: 'تماس', href: '/contact' as const },
+]
 
-پ
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { data: session, status } = useSession()
-  const pathname = usePathname()
+  const pathname = usePathname() as string
+  const prevPathname = useRef(pathname)
 
-چ  useEffect(() => {
+  useEffect(() => {
     let ticking = false
-    
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
@@ -34,13 +32,15 @@ export default function Navbar() {
         ticking = true
       }
     }
-
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   useEffect(() => {
-    setIsOpen(false)
+    if (prevPathname.current !== pathname) {
+      prevPathname.current = pathname
+      setIsOpen(false)
+    }
   }, [pathname])
 
   const handleSignOut = useCallback(() => {
@@ -53,9 +53,7 @@ export default function Navbar() {
     setIsOpen(false)
   }, [])
 
-  const toggleMenu = useCallback(() => {
-    setIsOpen(prev => !prev)
-  }, [])
+  const toggleMenu = useCallback(() => setIsOpen(prev => !prev), [])
 
   return (
     <motion.nav
@@ -63,20 +61,14 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-black/80 backdrop-blur-xl border-b border-gray-800/50 shadow-2xl' 
-          : 'bg-transparent'
+        scrolled ?
+          'bg-black/80 backdrop-blur-xl border-b border-gray-800/50 shadow-2xl' :
+          'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          
-          
-          <Link 
-            href="/" 
-            className="flex items-center gap-3 group"
-            prefetch={true}
-          >
+          <Link href="/" className="flex items-center gap-3 group" prefetch={true}>
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-300" />
               <div className="relative w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
@@ -90,8 +82,8 @@ export default function Navbar() {
 
           <DesktopMenu pathname={pathname} />
 
-          <AuthSection 
-            session={session} 
+          <AuthSection
+            session={session}
             status={status}
             onSignOut={handleSignOut}
             onSignIn={handleSignIn}
@@ -107,7 +99,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <MobileMenu 
+      <MobileMenu
         isOpen={isOpen}
         session={session}
         pathname={pathname}
@@ -118,22 +110,21 @@ export default function Navbar() {
     </motion.nav>
   )
 }
- 
 
 function DesktopMenu({ pathname }: { pathname: string }) {
   return (
     <div className="hidden lg:flex items-center gap-8">
-      {NAV_LINKS.map((link) => (
+      {NAV_LINKS.map(link => (
         <Link
           key={link.href}
           href={link.href}
           prefetch={true}
-          className={`relative text-gray-300 hover:text-white transition-colors ${
+          className={`relative text-gray-300 hover:text-white transition-colors group ${
             pathname === link.href ? 'text-white' : ''
           }`}
         >
           {link.name}
-          <span 
+          <span
             className={`absolute bottom-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 ${
               pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
             }`}
@@ -159,19 +150,17 @@ function AuthSection({ session, status, onSignOut, onSignIn }: AuthSectionProps)
       </div>
     )
   }
-
   if (session) {
     return (
       <div className="hidden lg:flex items-center gap-4">
-        <Link 
-          href="/dashboard" 
+        <Link
+          href="/dashboard"
           prefetch={true}
           className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-800/50 hover:bg-gray-700/50 transition-colors"
         >
           <User className="w-5 h-5 text-blue-400" />
           <span className="text-sm">{session.user?.name}</span>
         </Link>
-
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -184,7 +173,6 @@ function AuthSection({ session, status, onSignOut, onSignIn }: AuthSectionProps)
       </div>
     )
   }
-
   return (
     <div className="hidden lg:flex items-center gap-3">
       <motion.button
@@ -196,7 +184,6 @@ function AuthSection({ session, status, onSignOut, onSignIn }: AuthSectionProps)
         <LogIn className="w-5 h-5" />
         ورود
       </motion.button>
-
       <Link href="/auth/signup" prefetch={true}>
         <motion.button
           whileHover={{ scale: 1.05 }}
@@ -210,7 +197,6 @@ function AuthSection({ session, status, onSignOut, onSignIn }: AuthSectionProps)
   )
 }
 
-
 interface MobileMenuProps {
   isOpen: boolean
   session: any
@@ -220,14 +206,7 @@ interface MobileMenuProps {
   onSignIn: () => void
 }
 
-function MobileMenu({ 
-  isOpen, 
-  session, 
-  pathname, 
-  onClose, 
-  onSignOut, 
-  onSignIn 
-}: MobileMenuProps) {
+function MobileMenu({ isOpen, session, pathname, onClose, onSignOut, onSignIn }: MobileMenuProps) {
   return (
     <AnimatePresence>
       {isOpen && (

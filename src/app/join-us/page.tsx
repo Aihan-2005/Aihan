@@ -21,12 +21,13 @@ interface FormErrors {
   email?: string
   skill?: string
   cooperationType?: string
+  about?: string
   resume?: string
 }
 
-type FormField = keyof FormData
+type FormField = keyof FormErrors
 
-export default function JoinUsPage(): JSX.Element {
+export default function JoinUsPage() {
   const [submitted, setSubmitted] = useState<boolean>(false)
   const [errors, setErrors] = useState<FormErrors>({})
   const [form, setForm] = useState<FormData>({
@@ -43,7 +44,7 @@ export default function JoinUsPage(): JSX.Element {
   ): void => {
     const { name, value } = e.target
     setForm(prev => ({ ...prev, [name]: value }))
-    
+
     if (errors[name as FormField]) {
       setErrors(prev => ({ ...prev, [name]: "" }))
     }
@@ -87,13 +88,6 @@ export default function JoinUsPage(): JSX.Element {
     }
 
     try {
-      // 🔌 اینجا درخواست به بک‌اند ارسال می‌شود
-      // const response = await fetch('/api/submit-resume', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(form)
-      // })
-      
       console.log("Form submitted:", form)
       setSubmitted(true)
     } catch (error) {
@@ -116,7 +110,7 @@ export default function JoinUsPage(): JSX.Element {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-gray-900 text-white">
-      
+
       <section className="relative pt-32 pb-20 overflow-hidden">
         <Container>
           <motion.div
@@ -140,7 +134,7 @@ export default function JoinUsPage(): JSX.Element {
       </section>
 
       <section className="pb-28 relative z-10">
-        <Container className="max-w-xl">
+        <div className="max-w-xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -160,7 +154,7 @@ export default function JoinUsPage(): JSX.Element {
                 </h2>
 
                 <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-                  
+
                   <div>
                     <label htmlFor="fullName" className="block mb-2 text-sm font-medium text-gray-300">
                       نام و نام خانوادگی <span className="text-red-400">*</span>
@@ -331,22 +325,22 @@ export default function JoinUsPage(): JSX.Element {
               >
                 <div className="mb-6">
                   <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg 
-                      className="w-10 h-10 text-green-400" 
-                      fill="none" 
-                      stroke="currentColor" 
+                    <svg
+                      className="w-10 h-10 text-green-400"
+                      fill="none"
+                      stroke="currentColor"
                       viewBox="0 0 24 24"
                     >
-                      <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        strokeWidth={2} 
-                        d="M5 13l4 4L19 7" 
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
                       />
                     </svg>
                   </div>
                   <h3 className="text-2xl font-bold text-green-400 mb-4">
-                    ✅ رزومه با موفقیت ارسال شد
+              رزومه با موفقیت ارسال شد
                   </h3>
                   <p className="text-gray-300 mb-8">
                     در صورت تطابق، خیلی زود باهات تماس می‌گیریم 🌱
@@ -355,7 +349,7 @@ export default function JoinUsPage(): JSX.Element {
                     type="button"
                     onClick={resetForm}
                     className="
-                      text-blue-400 hover:text-blue-300 
+                      text-blue-400 hover:text-blue-300
                       transition-colors duration-200
                       underline underline-offset-4
                     "
@@ -366,7 +360,7 @@ export default function JoinUsPage(): JSX.Element {
               </motion.div>
             )}
           </motion.div>
-        </Container>
+        </div>
       </section>
     </div>
   )
