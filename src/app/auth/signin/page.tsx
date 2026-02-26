@@ -31,7 +31,7 @@ export default function SignInPage() {
       } else {
         router.push('/dashboard')
       }
-    } catch (err) {
+    } catch {
       setError('خطایی رخ داد. لطفاً دوباره تلاش کنید')
     } finally {
       setIsLoading(false)
@@ -45,10 +45,8 @@ export default function SignInPage() {
         animate={{ opacity: 1, y: 0 }}
         className="max-w-md w-full"
       >
-        {/* Card */}
         <div className="bg-gray-800/50 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/50 shadow-2xl">
-          
-          {/* Header */}
+
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               ورود به حساب
@@ -56,7 +54,6 @@ export default function SignInPage() {
             <p className="text-gray-400">به استارتاپ ما خوش آمدید</p>
           </div>
 
-          {/* Error */}
           {error && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -67,14 +64,9 @@ export default function SignInPage() {
             </motion.div>
           )}
 
-          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
-            
-            {/* Email */}
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-300">
-                ایمیل
-              </label>
+              <label className="block text-sm font-medium mb-2 text-gray-300">ایمیل</label>
               <div className="relative">
                 <Mail className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
@@ -88,11 +80,8 @@ export default function SignInPage() {
               </div>
             </div>
 
-            {/* Password */}
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-300">
-                رمز عبور
-              </label>
+              <label className="block text-sm font-medium mb-2 text-gray-300">رمز عبور</label>
               <div className="relative">
                 <Lock className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
@@ -106,7 +95,6 @@ export default function SignInPage() {
               </div>
             </div>
 
-            {/* Submit */}
             <motion.button
               type="submit"
               disabled={isLoading}
@@ -125,14 +113,12 @@ export default function SignInPage() {
             </motion.button>
           </form>
 
-          {/* Divider */}
           <div className="my-6 flex items-center gap-4">
             <div className="flex-1 h-px bg-gray-700"></div>
             <span className="text-gray-500 text-sm">یا</span>
             <div className="flex-1 h-px bg-gray-700"></div>
           </div>
 
-          {/* Google Login */}
           <motion.button
             onClick={() => signIn('google')}
             whileHover={{ scale: 1.02 }}
@@ -143,7 +129,6 @@ export default function SignInPage() {
             ورود با گوگل
           </motion.button>
 
-          {/* Sign Up Link */}
           <p className="mt-6 text-center text-gray-400">
             حساب کاربری ندارید؟{' '}
             <Link href="/auth/signup" className="text-blue-400 hover:text-blue-300 font-semibold">
@@ -151,7 +136,6 @@ export default function SignInPage() {
             </Link>
           </p>
 
-          {/* Test Info */}
           <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl">
             <p className="text-xs text-blue-400 text-center">
               <strong>تست:</strong> admin@example.com / admin123

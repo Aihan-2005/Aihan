@@ -1,10 +1,26 @@
 import NextAuth, { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
+import bcrypt from 'bcryptjs'
+
+const users: Array<{
+  id: string
+  name: string
+  email: string
+  password: string
+  role: string
+}> = [
+  {
+    id: '1',
+    name: 'ادمین',
+    email: 'admin@example.com',
+    password: '$2a$10$CwTycUXWue0Thq9StjUM0uJ8qP.3L0P3L0P3L0P3L0P3L0',
+    role: 'admin'
+  }
+]
 
 export const authOptions: NextAuthOptions = {
   providers: [
-    // ورود با ایمیل و پسورد
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
@@ -12,21 +28,25 @@ export const authOptions: NextAuthOptions = {
         password: { label: "رمز عبور", type: "password" }
       },
       async authorize(credentials) {
-        // فعلاً یک کاربر تستی برمی‌گردونیم
-        // بعداً از دیتابیس می‌خونیم
-        if (credentials?.email === 'admin@example.com' && credentials?.password === 'admin123') {
-          return {
-            id: '1',
-            name: 'ادمین',
-            email: 'admin@example.com',
-            role: 'admin'
-          }
+        if (!credentials?.email || !credentials?.password) {
+          return null
         }
-        return null
+
+        const user = users.find(u => u.email === credentials.email)
+        if (!user) return null
+
+        const isPasswordValid = await bcrypt.compare(credentials.password, user.password)
+        if (!isPasswordValid) return null
+
+        return {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          role: user.role
+        }
       }
     }),
 
-    // ورود با گوگل (اختیاری)
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || '',
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
@@ -40,7 +60,7 @@ export const authOptions: NextAuthOptions = {
 
   session: {
     strategy: 'jwt',
-    maxAge: 30 * 24 * 60 * 60, // 30 روز
+    maxAge: 30 * 24 * 60 * 60,
   },
 
   callbacks: {
@@ -62,4 +82,6 @@ export const authOptions: NextAuthOptions = {
 }
 
 const handler = NextAuth(authOptions)
-export { handler as GET, handler as POST }
+
+export const GET = handler
+export const POST = handler

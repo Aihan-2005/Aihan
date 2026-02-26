@@ -10,7 +10,7 @@ export default function FutureVision() {
 
       <Container>
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
@@ -21,7 +21,7 @@ export default function FutureVision() {
           </h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
             className="text-gray-300 text-lg md:text-xl leading-relaxed mb-10"
@@ -34,7 +34,7 @@ export default function FutureVision() {
           </motion.p>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
             className="text-gray-400 text-base md:text-lg leading-relaxed mb-10"
@@ -44,7 +44,7 @@ export default function FutureVision() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.7 }}
             className="bg-black/40 backdrop-blur-xl rounded-3xl border border-white/10 p-8 md:p-10 shadow-[0_0_35px_rgba(0,150,255,0.15)]"
