@@ -1,3 +1,4 @@
+// src/components/sections/Features.tsx
 "use client"
 
 import { motion } from "framer-motion"
@@ -5,21 +6,21 @@ import Container from "@/components/ui/Container"
 
 const features = [
   {
-    title: "یکپارچگی API",
-    desc: "دریافت API Key، اتصال آسان به مدل‌ها و استفاده‌ی بی‌وقفه در نرم‌افزار شما.",
-    icon: "⚙️",
+    title: "هوش مصنوعی سفارشی برای کسب‌وکار شما",
+    desc: "مدل‌های AI را متناسب با داده، فرآیند و اهداف کسب‌وکار شما آموزش می‌دهیم. نه یک راه‌حل عمومی — یک موتور هوشمند که دقیقاً برای رشد شما ساخته شده.",
+    icon: "🧠",
     color: "from-cyan-400 to-blue-500"
   },
   {
-    title: "تحلیل و آمار دقیق",
-    desc: "داشبورد هوشمند با ردیابی مصرف، عملکرد مدل‌ها و گزارش‌های زنده.",
-    icon: "📊",
+    title: "خودکارسازی فرآیندها، کاهش هزینه",
+    desc: "تکراری‌ترین و زمان‌برترین کارهای تیم شما را با AI اتوماتیک می‌کنیم. نتیجه: تیم کوچک‌تر، سرعت بالاتر و سود بیشتر.",
+    icon: "⚡",
     color: "from-blue-400 to-indigo-500"
   },
   {
-    title: "امنیت و مقیاس‌پذیری",
-    desc: "معماری ابری با ایزولیشن داده، رمزنگاری و زیرساخت مقیاس‌پذیر WiserAI Cloud.",
-    icon: "🛡️",
+    title: "رشد پایدار با داده‌محوری",
+    desc: "با تحلیل رفتار مشتریان، پیش‌بینی بازار و بینش‌های عمیق AI، تصمیم‌های استراتژیک را بر پایه داده بگیرید نه حدس.",
+    icon: "📈",
     color: "from-indigo-400 to-purple-500"
   }
 ]
@@ -27,7 +28,6 @@ const features = [
 export default function Features() {
   return (
     <section className="relative py-28 overflow-hidden bg-gradient-to-b from-[#04040a] via-[#060819] to-[#0b0c1a] text-white border-t border-blue-900/20">
-      {/* نور پس‌زمینه ملایم */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,115,255,0.15)_0%,transparent_80%)] pointer-events-none" />
 
       <Container>
@@ -42,11 +42,10 @@ export default function Features() {
             چرا WiserAI؟
           </h2>
           <p className="text-gray-400 mt-5 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            ما زیرساخت هوش مصنوعی را طوری طراحی کرده‌ایم که توسعه‌دهندگان و تیم‌ها با کمترین اصطکاک به بیشترین کارایی برسند.
+            ما زیرساخت هوش مصنوعی را طوری طراحی کرده‌ایم که کسب‌وکارها با کمترین پیچیدگی، بیشترین رشد را تجربه کنند.
           </p>
         </motion.div>
 
-        {/* کارت‌ها */}
         <div className="grid md:grid-cols-3 gap-10">
           {features.map((f, index) => (
             <motion.div
@@ -62,12 +61,10 @@ export default function Features() {
               }}
               className="relative group rounded-3xl p-[2px] bg-gradient-to-r from-gray-800/60 to-gray-900/60 hover:from-gray-700/70 hover:to-gray-800/70 transition"
             >
-              {/* Glow نئونی بیرونی */}
               <div
                 className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${f.color} opacity-0 group-hover:opacity-40 blur-2xl transition duration-500`}
               />
 
-              {/* محتوای کارت */}
               <div className="relative z-10 rounded-3xl bg-black/70 backdrop-blur-xl border border-white/10 p-10 flex flex-col items-center text-center">
                 <motion.div
                   whileHover={{ scale: 1.2, rotate: 5 }}
@@ -95,7 +92,6 @@ export default function Features() {
         </div>
       </Container>
 
-      {/* افکت خطوط نور پایین */}
       <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
     </section>
   )
