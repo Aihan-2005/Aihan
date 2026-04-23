@@ -82,7 +82,7 @@ export default function PricingPage() {
             transition={{ delay: 0.2 }}
             className="text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed"
           >
-            ما API نمیفروشیم. ما هوش مصنوعی اختصاصی برای کسب‌وکار شما می‌سازیم.
+            ما API نمیفروشیم. ما با دانش خود هوش مصنوعی اختصاصی برای کسب‌وکار شما می‌سازیم.
             <br />
             <span className="text-purple-400 font-medium">هر پروژه، یک قیمت منحصربه‌فرد.</span>
           </motion.p>

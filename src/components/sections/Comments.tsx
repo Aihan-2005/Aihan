@@ -35,6 +35,30 @@ const testimonials = [
     role: "دانشمند داده در SynapseAI",
     text: "تیم WiserAI دقیقاً می‌فهمه هوش مصنوعی واقعی چیه. از طراحی تا اجرا، سریع، تمیز و فکرشده.",
     avatar: "/avatars/avatar5.png"
+  },
+  {
+    name: "مهسا فلاح",
+    role: "دانشمند داده در SynapseAI",
+    text: "تیم WiserAI دقیقاً می‌فهمه هوش مصنوعی واقعی چیه. از طراحی تا اجرا، سریع، تمیز و فکرشده.",
+    avatar: "/avatars/avatar5.png"
+  },
+  {
+    name: "مهسا فلاح",
+    role: "دانشمند داده در SynapseAI",
+    text: "تیم WiserAI دقیقاً می‌فهمه هوش مصنوعی واقعی چیه. از طراحی تا اجرا، سریع، تمیز و فکرشده.",
+    avatar: "/avatars/avatar5.png"
+  },
+  {
+    name: "مهسا فلاح",
+    role: "دانشمند داده در SynapseAI",
+    text: "تیم WiserAI دقیقاً می‌فهمه هوش مصنوعی واقعی چیه. از طراحی تا اجرا، سریع، تمیز و فکرشده.",
+    avatar: "/avatars/avatar5.png"
+  },
+  {
+    name: "مهسا فلاح",
+    role: "دانشمند داده در SynapseAI",
+    text: "تیم WiserAI دقیقاً می‌فهمه هوش مصنوعی واقعی چیه. از طراحی تا اجرا، سریع، تمیز و فکرشده.",
+    avatar: "/avatars/avatar5.png"
   }
 ]
 
