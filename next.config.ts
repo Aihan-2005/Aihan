@@ -66,13 +66,10 @@
 import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
-  // ✅ حالت Strict React
   reactStrictMode: true,
 
-  // ✅ فشرده‌سازی پاسخ‌ها
   compress: true,
 
-  // ✅ حذف console در Production
   compiler: {
     removeConsole:
       process.env.NODE_ENV === "production"
@@ -80,18 +77,15 @@ const nextConfig: NextConfig = {
         : false,
   },
 
-  // ✅ تنظیمات TypeScript
   typescript: {
     ignoreBuildErrors: false,
   },
 
-  // ✅ تنظیمات تصویر - اضافه شدن unsplash
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "avatars.githubusercontent.com" },
       { protocol: "https", hostname: "lh3.googleusercontent.com" },
       { protocol: "https", hostname: "cdn.discordapp.com" },
-      // ✅ اضافه شد - برای تصاویر بلاگ
       { protocol: "https", hostname: "images.unsplash.com" },
     ],
     formats: ["image/avif", "image/webp"],
@@ -103,23 +97,14 @@ const nextConfig: NextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
-  // ✅ serverActions به سطح بالا منتقل شد (Next.js 15+)
   serverExternalPackages: [],
 
   experimental: {
-    // ✅ reactCompiler به داخل experimental منتقل شد
     reactCompiler: true,
 
-    // ✅ typedRoutes به داخل experimental منتقل شد
     typedRoutes: true,
 
-    // ✅ optimizeCss - فقط اگر critters نصب باشد فعال کن
-    // برای فعال‌سازی: npm install critters
-    // optimizeCss: true,
 
-    // ✅ serverActions به اینجا تعلق دارد (Next.js 14 و پایین‌تر)
-    // در Next.js 15 این گزینه به سطح بالا رفته
-    // serverActions: { bodySizeLimit: "2mb" },
   },
 
   async headers() {
@@ -131,7 +116,6 @@ const nextConfig: NextConfig = {
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "origin-when-cross-origin" },
-          // ✅ اضافه شد - امنیت بیشتر
           {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
@@ -147,7 +131,6 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // ✅ اضافه شد - کش فونت‌ها
       {
         source: "/fonts/:path*",
         headers: [

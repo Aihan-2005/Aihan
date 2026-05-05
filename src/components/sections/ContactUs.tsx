@@ -19,7 +19,7 @@ export default function ContactPage() {
             </div>
             <div>
              
-              <p className="text-blue-400">خیابان جمهوری، بین میدان بهارستان و میدان جمهوری<br/>پاساژ نور، طبقه ۱،<br/></p>
+              <p className="text-blue-400">تهران, جردن<br/> خیابان سعیدی<br/></p>
             </div>
           </div>
 
@@ -39,7 +39,7 @@ export default function ContactPage() {
             </div>
             <div>
               
-              <p className="text-blue-400">example@example.com</p>
+              <p className="text-blue-400">Wiser2zx@gmail.com</p>
             </div>
           </div>
 
