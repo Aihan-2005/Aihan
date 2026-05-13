@@ -78,22 +78,46 @@ export default function JoinUsPage() {
     return err
   }
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
-    e.preventDefault()
-    const validationErrors = validate()
+const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
+  e.preventDefault()
+  const validationErrors = validate()
 
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors)
-      return
-    }
-
-    try {
-      console.log("Form submitted:", form)
-      setSubmitted(true)
-    } catch (error) {
-      console.error("Submission error:", error)
-    }
+  if (Object.keys(validationErrors).length > 0) {
+    setErrors(validationErrors)
+    return
   }
+
+  try {
+    const payload = {
+      fullName: form.fullName,
+      email: form.email,
+      specialty: form.skill,
+      cooperationType: form.cooperationType,
+      description: form.about,
+      profileLink: form.resume
+    }
+
+    const response = await fetch("http://localhost:3000/recruitment/apply", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+
+    if (response.ok) {
+      const result = await response.json()
+      console.log("Success:", result)
+      setSubmitted(true)
+    } else {
+      const error = await response.json()
+      console.error(error)
+    }
+
+  } catch (err) {
+    console.error("Network error:", err)
+  }
+}
 
   const resetForm = (): void => {
     setSubmitted(false)
