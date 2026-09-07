@@ -328,7 +328,7 @@ export default function Footer() {
               </p>
               <div className="flex items-center gap-3 md:gap-4">
                 <span className="hidden sm:inline text-gray-700">|</span>
-                <a href="/privacy" className="hover:text-gray-300 transition-colors duration-300">حریم خصوصی</a>
+                <a  className="hover:text-gray-300 transition-colors duration-300">حریم خصوصی</a>
                 <span className="text-gray-700">•</span>
                 <a href="/terms" className="hover:text-gray-300 transition-colors duration-300">شرایط استفاده</a>
               </div>

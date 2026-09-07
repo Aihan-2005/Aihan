@@ -29,7 +29,7 @@ export default function Navbar() {
     { name: "ارتباط با ما", href: "/contact" },
     { name: "هوشمندسازی", href: "/smart-automation" },
     { name: "همکاری با ما", href: "/join-us" },
-  ]
+  ]as const
 
   useEffect(() => {
     links.forEach(link => {
@@ -107,13 +107,16 @@ export default function Navbar() {
                   خروج
                 </button>
               </div>
-            ) : (
-              <Link href="/login" prefetch={true}>
-                <Button variant="primary" className="text-sm px-5 py-2">
-                  ورود / ثبت‌نام
-                </Button>
-              </Link>
-            )}
+            ) 
+            : (
+              null
+              // <Link href="/login" prefetch={true}>
+              //   <Button variant="primary" className="text-sm px-5 py-2">
+              //     ورود / ثبت‌نام
+              //   </Button>
+              // </Link>
+            )
+            }
           </div>
 
           {/* منو موبایل */}
@@ -181,11 +184,12 @@ export default function Navbar() {
                   </button>
                 </div>
               ) : (
-                <Link href="/login" prefetch={true} onClick={close}>
-                  <Button variant="primary" className="text-sm px-5">
-                    ورود / ثبت‌نام
-                  </Button>
-                </Link>
+                null
+                // <Link href="/login" prefetch={true} onClick={close}>
+                //   <Button variant="primary" className="text-sm px-5">
+                //     ورود / ثبت‌نام
+                //   </Button>
+                // </Link>
               )}
             </div>
           </motion.div>

@@ -283,13 +283,9 @@ import {
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
-
 interface Product {
   id: number
-  slug: string                    // ✅ اضافه شد
+  slug: string
   name: string
   description: string
   image: string
@@ -299,17 +295,13 @@ interface Product {
   tag?: string
 }
 
-/* -------------------------------------------------------------------------- */
-/*                               Products Data                                */
-/* -------------------------------------------------------------------------- */
-
 const PRODUCTS: Product[] = [
   {
     id: 1,
-    slug: 'smart-assistant',      // ✅ اضافه شد
+    slug: 'smart-assistant',
     name: 'دستیار هوشمند',
     description: 'پاسخگویی خودکار و هوشمند به مشتریان با NLP پیشرفته',
-    image: '/images/products/chatbot.jpg',
+    image: '/images/ai-assistant.png',
     icon: 'MessageSquare',
     gradient: 'from-blue-500 to-cyan-500',
     features: ['NLP', '۲۴/۷', 'یادگیری مداوم'],
@@ -317,30 +309,30 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 2,
-    slug: 'content-generator',    // ✅ اضافه شد
+    slug: 'content-generator',
     name: 'تولید محتوای AI',
     description: 'تولید متن‌های بازاریابی و سئو شده با کیفیت بالا',
-    image: '/images/products/content.jpg',
+    image: '/images/AI-Content-Creation.jpg',
     icon: 'Sparkles',
     gradient: 'from-purple-500 to-pink-500',
     features: ['SEO', 'چندزبانه', 'خلاق']
   },
   {
     id: 3,
-    slug: 'data-analyzer',        // ✅ اضافه شد
+    slug: 'data-analyzer',
     name: 'تحلیل داده هوشمند',
     description: 'تبدیل داده‌های خام به بینش‌های تجاری ارزشمند',
-    image: '/images/products/data.jpg',
+    image: '/images/data-analysis.jpg',
     icon: 'Brain',
     gradient: 'from-indigo-500 to-blue-500',
     features: ['تحلیل', 'پیش‌بینی', 'گزارش']
   },
   {
     id: 4,
-    slug: 'machine-vision',       // ✅ اضافه شد
+    slug: 'machine-vision',
     name: 'بینایی ماشین',
     description: 'تشخیص تصویر و ویدیو با دقت بالا',
-    image: '/images/products/vision.jpg',
+    image: '/images/machine-vision.jpg',
     icon: 'Eye',
     gradient: 'from-green-500 to-emerald-500',
     features: ['چهره', 'اشیاء', 'ویدیو'],
@@ -348,40 +340,40 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 5,
-    slug: 'speech-processing',    // ✅ اضافه شد
+    slug: 'speech-processing',
     name: 'پردازش گفتار',
     description: 'تبدیل گفتار به متن و بالعکس با کیفیت بالا',
-    image: '/images/products/speech.jpg',
+    image: '/images/speech-processing.png',
     icon: 'Layers',
     gradient: 'from-orange-500 to-red-500',
     features: ['Speech‑to‑Text', 'Voice AI']
   },
   {
     id: 6,
-    slug: 'market-prediction',    // ✅ اضافه شد
+    slug: 'market-prediction',
     name: 'پیش‌بینی بازار',
     description: 'تحلیل روند بازار و پیش‌بینی قیمت‌ها',
-    image: '/images/products/market.jpg',
+    image: '/images/market-prediction.jpg',
     icon: 'TrendingUp',
     gradient: 'from-teal-500 to-cyan-500',
     features: ['روند', 'ریسک']
   },
   {
     id: 7,
-    slug: 'smart-search',         // ✅ اضافه شد
+    slug: 'smart-search',
     name: 'جستجوی هوشمند',
     description: 'جستجوی معنایی پیشرفته در داده‌ها',
-    image: '/images/products/search.jpg',
+    image: '/images/smart-search.png',
     icon: 'Search',
     gradient: 'from-violet-500 to-purple-500',
     features: ['Semantic', 'AI']
   },
   {
     id: 8,
-    slug: 'ai-automation',        // ✅ اضافه شد
+    slug: 'ai-automation',
     name: 'اتوماسیون AI',
     description: 'خودکارسازی فرآیندهای کسب‌وکار',
-    image: '/images/products/automation.jpg',
+    image: '/images/ai-automation.jpg',
     icon: 'Cpu',
     gradient: 'from-rose-500 to-pink-500',
     features: ['RPA', 'کاهش هزینه'],
@@ -389,19 +381,15 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 9,
-    slug: 'sentiment-analysis',   // ✅ اضافه شد
+    slug: 'sentiment-analysis',
     name: 'تحلیل احساسات',
     description: 'تحلیل نظرات و احساسات کاربران',
-    image: '/images/products/sentiment.jpg',
+    image: '/images/sentiment-analysis.jpg',
     icon: 'BarChart',
     gradient: 'from-amber-500 to-yellow-500',
     features: ['Sentiment', 'Feedback']
   }
 ]
-
-/* -------------------------------------------------------------------------- */
-/*                                   Icons                                    */
-/* -------------------------------------------------------------------------- */
 
 const ICONS: Record<string, any> = {
   MessageSquare,
@@ -415,16 +403,23 @@ const ICONS: Record<string, any> = {
   BarChart
 }
 
-/* -------------------------------------------------------------------------- */
-/*                                Main Section                                 */
-/* -------------------------------------------------------------------------- */
+const shimmer = (w: number, h: number) => `
+<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
+  <rect width="${w}" height="${h}" fill="#111111" />
+  <rect width="${w}" height="${h}" fill="#1f1f1f" opacity="0.6" />
+</svg>`
+
+const toBase64 = (str: string) =>
+  typeof window === 'undefined'
+    ? Buffer.from(str).toString('base64')
+    : window.btoa(str)
+
+const shimmerDataUrl = `data:image/svg+xml;base64,${toBase64(shimmer(700, 400))}`
 
 export default function Products() {
   return (
     <section className="py-24 bg-black text-white">
       <Container>
-
-        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-l from-blue-400 to-purple-400 bg-clip-text text-transparent">
             محصولات هوش مصنوعی
@@ -434,7 +429,6 @@ export default function Products() {
           </p>
         </div>
 
-        {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {PRODUCTS.map((product, index) => (
             <ProductCard
@@ -445,7 +439,6 @@ export default function Products() {
           ))}
         </div>
 
-        {/* CTA */}
         <div className="text-center mt-20">
           <Link href="/products" prefetch>
             <Button className="px-8 py-4 text-lg font-bold">
@@ -453,15 +446,10 @@ export default function Products() {
             </Button>
           </Link>
         </div>
-
       </Container>
     </section>
   )
 }
-
-/* -------------------------------------------------------------------------- */
-/*                                Product Card                                */
-/* -------------------------------------------------------------------------- */
 
 function ProductCard({
   product,
@@ -493,6 +481,10 @@ function ProductCard({
           alt={product.name}
           fill
           priority={priority}
+          loading={priority ? undefined : 'lazy'}
+          quality={75}
+          placeholder="blur"
+          blurDataURL={shimmerDataUrl}
           sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
           className="object-cover"
         />
@@ -521,7 +513,6 @@ function ProductCard({
           ))}
         </div>
 
-        {/* ✅ لینک اصلاح شده - حالا از slug استفاده می‌کنه */}
         <Link
           href={`/products/${product.slug}`}
           className="inline-flex items-center gap-2 text-sm font-semibold text-blue-400"

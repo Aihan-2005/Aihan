@@ -17,17 +17,19 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const user = await findUserByEmail(credentials?.email || "") // بعداً وصل به دیتابیس
-        if (!user) return null
-        const valid = await compare(credentials!.password, user.password)
-        if (!valid) return null
-        return user
+
+      return null
+        // const user = await findUserByEmail(credentials?.email || "") // بعداً وصل به دیتابیس
+        // if (!user) return null
+        // const valid = await compare(credentials!.password, user.password)
+        // if (!valid) return null
+        // return user
       },
     }),
   ],
   pages: {
     signIn: "/login",
   },
-  session: { stnrategy: "jwt" },
+  session: { strategy: "jwt" },
   secret: process.env.NEXTAUTH_SECRET,
 }

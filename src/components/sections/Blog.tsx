@@ -263,7 +263,7 @@ function BlogCard({ post, index, isInView }: {
     'rgba(139, 92, 246, 0.15)',   // violet
     'rgba(236, 72, 153, 0.15)',   // pink
     'rgba(20, 184, 166, 0.15)'    // teal
-  ]
+  ]as const
 
   const gradients = [
     'from-cyan-500 to-blue-500',

@@ -60,7 +60,7 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
           className="prose prose-invert prose-lg max-w-none"
         >
           <p className="text-xl text-gray-300 leading-relaxed mb-8">
-            {post.description}
+             {post.excerpt}
           </p>
 
           {/* اینجا محتوای اصلی مقاله میاد - می‌تونی از MDX استفاده کنی */}

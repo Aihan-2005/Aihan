@@ -385,17 +385,20 @@ export default function FloatingLines({
 
     const clock = new Clock();
 
-    const setSize = () => {
-      const el = containerRef.current!;
-      const width = el.clientWidth || 1;
-      const height = el.clientHeight || 1;
+const setSize = () => {
+  const el = containerRef.current;
 
-      renderer.setSize(width, height, false);
+  if (!el) return;
 
-      const canvasWidth = renderer.domElement.width;
-      const canvasHeight = renderer.domElement.height;
-      uniforms.iResolution.value.set(canvasWidth, canvasHeight, 1);
-    };
+  const width = el.clientWidth || 1;
+  const height = el.clientHeight || 1;
+
+  renderer.setSize(width, height, false);
+
+  const canvasWidth = renderer.domElement.width;
+  const canvasHeight = renderer.domElement.height;
+  uniforms.iResolution.value.set(canvasWidth, canvasHeight, 1);
+};
 
     setSize();
 

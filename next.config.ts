@@ -99,13 +99,8 @@ const nextConfig: NextConfig = {
 
   serverExternalPackages: [],
 
-  experimental: {
-    reactCompiler: true,
-
-    typedRoutes: true,
-
-
-  },
+  reactCompiler: true,
+  typedRoutes: true,
 
   async headers() {
     return [

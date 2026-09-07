@@ -173,23 +173,23 @@ export default function FutureVision() {
           transition={{ delay: 0.5, duration: 0.6, type: "spring" }}
           className="flex justify-center mt-14"
         >
-          <Link href="/auth/signup" prefetch={true}>
-            <motion.button
-              whileHover={{ scale: 1.06 }}
-              whileTap={{ scale: 0.97 }}
-              className="relative px-10 py-4 rounded-full font-bold text-lg text-white
-                bg-gradient-to-r from-cyan-500 to-blue-600
-                shadow-[0_0_30px_rgba(0,180,255,0.35)]
-                hover:shadow-[0_0_50px_rgba(0,180,255,0.55)]
-                transition-shadow duration-300 group"
-            >
-              <span className="relative z-10">همین حالا شروع کن ←</span>
-              <motion.div
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition duration-300"
-                style={{ zIndex: 0 }}
-              />
-            </motion.button>
-          </Link>
+<motion.div
+  whileHover={{ scale: 1.06 }}
+  whileTap={{ scale: 0.97 }}
+>
+<Link
+  href="/auth/signup"
+  prefetch={true}
+  className="relative px-10 py-4 rounded-full font-bold text-lg text-white bg-gradient-to-r from-cyan-500 to-blue-600 shadow-[0_0_30px_rgba(0,180,255,0.35)] hover:shadow-[0_0_50px_rgba(0,180,255,0.55)] transition-shadow duration-300 group inline-block"
+>
+    <span className="relative z-10">همین حالا شروع کن ←</span>
+
+    <span
+      className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition duration-300"
+      style={{ zIndex: 0 }}
+    />
+  </Link>
+</motion.div>
         </motion.div>
 
       </Container>

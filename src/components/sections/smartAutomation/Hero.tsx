@@ -13,7 +13,7 @@ type Particle = {
   delay: number;
 };
 
-export default function Hero(): JSX.Element {
+export default function Hero() {
   const [mounted, setMounted] = useState(false);
   const [index, setIndex] = useState(0);
 

@@ -633,8 +633,8 @@ function ContactModal({ onClose }: { onClose: () => void }) {
           </button>
 
           <p className="text-xs text-gray-500 text-center">
-            با ارسال فرم، شما با <Link href="/privacy" className="text-purple-400 hover:underline">سیاست حفظ حریم خصوصی</Link> موافقت می‌کنید
-          </p>
+          با ارسال فرم، شما با سیاست حفظ حریم خصوصی موافقت می‌کنید
+         </p>
         </form>
       </motion.div>
     </motion.div>
