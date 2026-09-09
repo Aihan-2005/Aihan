@@ -70,22 +70,25 @@ const contactInfo = [
   {
     icon: <FaPhone className="w-4 h-4" />,
     label: "تماس",
-    value: "۰۹۹۱ ۶۳۹ ۳۶۸۴",
+    value: "0991 639 3684",
     href: "tel:+989916393684",
+    direction: "ltr" as const,
     gradient: "from-green-400 to-emerald-500",
   },
   {
     icon: <FaTelegram className="w-4 h-4" />,
     label: "تلگرام",
-    value: "WiserTeam_Support@",
+    value: "@Aihan-m",
     href: "https://t.me/Aihan-m",
+    direction: "ltr" as const,
     gradient: "from-blue-400 to-sky-500",
   },
   {
     icon: <FaWhatsapp className="w-4 h-4" />,
     label: "واتساپ",
-    value: "۰۹۹۱ ۶۳۹ ۳۶۸۴",
+    value: "0991 639 3684",
     href: "https://wa.me/989916393684",
+    direction: "ltr" as const,
     gradient: "from-green-500 to-teal-500",
   },
   {
@@ -93,6 +96,7 @@ const contactInfo = [
     label: "ایمیل",
     value: "info@wiserteam.ir",
     href: "mailto:info@wiserteam.ir",
+    direction: "ltr" as const,
     gradient: "from-orange-400 to-red-500",
   },
 ];
@@ -110,7 +114,7 @@ const CURRENT_YEAR = new Date().getFullYear();
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden">
+    <footer dir="rtl" className="relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-950 via-black to-gray-950">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(14,165,233,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(168,85,247,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
@@ -243,7 +247,7 @@ export default function Footer() {
               </h3>
               
               {/* Contact Cards - 2x2 Grid on Mobile */}
-              <div className="grid grid-cols-2 gap-3 mb-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
                 {contactInfo.map((item) => (
                   <motion.a
                     key={item.label}
@@ -262,8 +266,13 @@ export default function Footer() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-xs text-gray-500 mb-1">{item.label}</p>
-                          <p className="text-xs md:text-sm text-gray-300 font-medium break-words group-hover:text-white transition-colors leading-relaxed" dir="rlt">
-                            {item.value}
+                          <p className="text-xs md:text-sm text-gray-300 font-medium group-hover:text-white transition-colors leading-relaxed">
+                            <bdi
+                              dir={item.direction}
+                              className="block w-full text-left break-all sm:break-normal [unicode-bidi:isolate]"
+                            >
+                              {item.value}
+                            </bdi>
                           </p>
                         </div>
                       </div>
@@ -283,7 +292,7 @@ export default function Footer() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-xs text-gray-500 mb-1">آدرس</p>
-                    <p className="text-xs md:text-sm text-gray-300 leading-relaxed group-hover:text-white transition-colors" dir="rlt">
+                    <p className="text-xs md:text-sm text-gray-300 leading-relaxed group-hover:text-white transition-colors" dir="rtl">
                       تهران، جردن
                     </p>
                   </div>

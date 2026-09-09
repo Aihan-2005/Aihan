@@ -58,7 +58,7 @@ export default function BlogList({ posts }: BlogListProps) {
   });
 
   return (
-    <div className="relative min-h-screen bg-black">
+    <div dir="rtl" className="relative min-h-screen bg-black">
       {/* پس‌زمینه */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl" />
@@ -104,7 +104,7 @@ export default function BlogList({ posts }: BlogListProps) {
             </span>
           </h1>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            آخرین مقالات، آموزش‌ها و بینش‌های تخصصی در حوزه توسعه وب
+            خبرها و تحلیل‌های به‌روز درباره مدل‌های هوش مصنوعی، Agentها، زیرساخت AI و کاربردهای واقعی آن‌ها
           </p>
         </motion.div>
 

@@ -1,30 +1,22 @@
-// import Navbar from "@/components/layout/Navbar"
-// import Footer from "@/components/sections/Footer"
-// import Blog from "@/components/sections/Blog"
-
-// export default function BlogPage() {
-//   return (
-//     <main className="bg-black text-white min-h-screen overflow-x-hidden">
-//       <Navbar />
-//       <Blog />
-//       <Footer />
-//     </main>
-//   )
-// }
-
-
-import { Metadata } from 'next';
-import { posts } from '@/data/blog/posts';
-import BlogList from '@/components/blog/BlogList';
+import type { Metadata } from 'next'
+import { posts } from '@/data/blog/posts'
+import BlogList from '@/components/blog/BlogList'
+import Navbar from '@/components/layout/Navbar'
+import Footer from '@/components/sections/Footer'
 
 export const metadata: Metadata = {
-  title: 'وبلاگ | نام سایت',
-  description: 'آخرین مقالات تخصصی در حوزه توسعه وب',
-};
+  title: 'وبلاگ هوش مصنوعی | WiserTeam',
+  description: 'خبرها و تحلیل‌های به‌روز درباره هوش مصنوعی، مدل‌های زبانی، Agentها و اتوماسیون.',
+}
 
-// صفحه استاتیک - نیازی به revalidate نیست
-export const dynamic = 'force-static';
+export const dynamic = 'force-static'
 
 export default function BlogPage() {
-  return <BlogList posts={posts} />;
+  return (
+    <main className="min-h-screen overflow-x-hidden bg-black text-white">
+      <Navbar />
+      <BlogList posts={posts} />
+      <Footer />
+    </main>
+  )
 }
