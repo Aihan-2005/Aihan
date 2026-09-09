@@ -1,22 +1,23 @@
 import type { Metadata } from 'next'
-import { posts } from '@/data/blog/posts'
+
 import BlogList from '@/components/blog/BlogList'
-import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/sections/Footer'
+import { posts } from '@/data/blog/posts'
 
 export const metadata: Metadata = {
   title: 'وبلاگ هوش مصنوعی | WiserTeam',
-  description: 'خبرها و تحلیل‌های به‌روز درباره هوش مصنوعی، مدل‌های زبانی، Agentها و اتوماسیون.',
+
+  description:
+    'خبرها و تحلیل‌های به‌روز درباره هوش مصنوعی، مدل‌های زبانی، Agentها و اتوماسیون.',
 }
 
 export const dynamic = 'force-static'
 
 export default function BlogPage() {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-black text-white">
-      <Navbar />
+    <div className="min-h-screen overflow-x-hidden bg-black text-white">
       <BlogList posts={posts} />
       <Footer />
-    </main>
+    </div>
   )
 }
